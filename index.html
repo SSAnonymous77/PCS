@@ -1,0 +1,1144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101d3a">
+<title>School Examination Portal</title>
+
+<style>
+:root {
+  --navy: #101d3a;
+  --blue: #3978f6;
+  --teal: #12a995;
+  --ink: #18233b;
+  --muted: #69758d;
+  --line: #e8edf5;
+  --bg: #f4f7fc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 8% 12%, rgba(57,120,246,.09), transparent 27rem),
+    radial-gradient(circle at 94% 80%, rgba(18,169,149,.08), transparent 25rem),
+    var(--bg);
+}
+
+.page {
+  width: min(1160px, calc(100% - 40px));
+  margin: auto;
+}
+
+/* HEADER */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 0 20px;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-mark {
+  width: 46px;
+  height: 46px;
+  border-radius: 15px;
+  display: grid;
+  place-items: center;
+  color: white;
+  background: linear-gradient(145deg, #4d8cff, #1c4fba);
+  box-shadow: 0 9px 22px rgba(57,120,246,.27);
+  font-size: 25px;
+}
+
+.brand-name {
+  font-weight: 800;
+  font-size: 15px;
+}
+
+.brand-sub {
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 4px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.top-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #315a9c;
+  background: #eaf1ff;
+  border: 1px solid #dce7ff;
+  padding: 9px 13px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .09em;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #16b78f;
+  box-shadow: 0 0 0 4px rgba(22,183,143,.12);
+}
+
+/* HERO */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+  color: white;
+  background: linear-gradient(115deg, #101d3a, #172e5a 58%, #174b69);
+  box-shadow: 0 28px 75px rgba(16,29,58,.22);
+  padding: clamp(30px, 6vw, 66px);
+  min-height: 390px;
+  display: grid;
+  grid-template-columns: 1.08fr .92fr;
+  align-items: center;
+  gap: 20px;
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  border: 1px solid rgba(255,255,255,.09);
+}
+
+.hero::before {
+  width: 490px;
+  height: 490px;
+  right: -125px;
+  top: -235px;
+  box-shadow:
+    0 0 0 35px rgba(255,255,255,.025),
+    0 0 0 75px rgba(255,255,255,.018);
+}
+
+.hero::after {
+  width: 330px;
+  height: 330px;
+  right: 8%;
+  bottom: -255px;
+}
+
+.hero-copy,
+.hero-art {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.08);
+  color: #bfe8f4;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .15em;
+}
+
+.eyebrow span {
+  width: 6px;
+  height: 6px;
+  background: #42d4c0;
+  border-radius: 50%;
+}
+
+h1 {
+  margin: 22px 0 14px;
+  font-size: clamp(36px, 5.4vw, 62px);
+  line-height: 1.04;
+  letter-spacing: -.045em;
+}
+
+h1 em {
+  color: #6edce0;
+  font-style: normal;
+}
+
+.hero-copy p {
+  max-width: 500px;
+  color: #c4d1e7;
+  font-size: 15px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.hero-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 26px;
+  color: #d8e6f8;
+  font-size: 12px;
+}
+
+/* HERO ILLUSTRATION */
+
+.hero-art {
+  min-height: 270px;
+  display: grid;
+  place-items: center;
+}
+
+.orbit {
+  width: min(310px, 90%);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: relative;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.15);
+  background: radial-gradient(circle, rgba(75,145,211,.25), rgba(255,255,255,.025) 65%, transparent 66%);
+  box-shadow: inset 0 0 50px rgba(91,196,223,.08);
+}
+
+.orbit::before,
+.orbit::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 50%;
+}
+
+.orbit::before { inset: 23px; }
+.orbit::after { inset: 49px; }
+
+.book {
+  width: 154px;
+  height: 116px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  filter: drop-shadow(0 20px 20px rgba(0,0,0,.22));
+  transform: rotate(-7deg);
+}
+
+.book .page {
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(145deg,#fff,#dceaff);
+  border: 2px solid #c9dbf6;
+}
+
+.book .left {
+  border-radius: 12px 4px 5px 12px;
+  transform: skewY(5deg);
+}
+
+.book .right {
+  border-radius: 4px 12px 12px 5px;
+  transform: skewY(-5deg);
+  background: linear-gradient(145deg,#f9ffff,#c9edf1);
+}
+
+.book .spine {
+  position: absolute;
+  left: 50%;
+  top: 3px;
+  bottom: 3px;
+  width: 3px;
+  background: #6c94c9;
+  transform: translateX(-50%);
+}
+
+.book .page::after {
+  content: "";
+  display: block;
+  width: 65%;
+  height: 3px;
+  margin: 24px auto 0;
+  border-radius: 4px;
+  background: #b4c9e7;
+  box-shadow: 0 12px #c5d6ec, 0 24px #c5d6ec;
+}
+
+.cap {
+  position: absolute;
+  z-index: 3;
+  top: 27px;
+  right: 24px;
+  width: 72px;
+  height: 58px;
+  transform: rotate(12deg);
+}
+
+.cap .top {
+  position: absolute;
+  width: 72px;
+  height: 34px;
+  background: linear-gradient(135deg,#55d7d1,#2798b8);
+  clip-path: polygon(50% 0,100% 48%,50% 100%,0 48%);
+}
+
+.cap .base {
+  position: absolute;
+  left: 18px;
+  top: 27px;
+  width: 36px;
+  height: 21px;
+  background: #e9f5ff;
+  border-radius: 0 0 12px 12px;
+}
+
+.cap .tassel {
+  position: absolute;
+  width: 2px;
+  height: 32px;
+  background: #f7d27b;
+  right: 7px;
+  top: 17px;
+}
+
+.float-chip {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  color: #23385d;
+  padding: 10px 13px;
+  border-radius: 13px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.16);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.float-chip span {
+  font-size: 17px;
+}
+
+.chip-one {
+  left: -15px;
+  top: 55px;
+}
+
+.chip-two {
+  right: -25px;
+  bottom: 48px;
+}
+
+/* ACCESS SECTION */
+
+.portal-section {
+  padding: 46px 0 24px;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.section-kicker {
+  color: #3978d8;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .18em;
+}
+
+h2 {
+  margin: 9px 0 8px;
+  font-size: clamp(24px, 3vw, 32px);
+  letter-spacing: -.035em;
+}
+
+.section-heading p {
+  color: var(--muted);
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.access-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.access-card {
+  position: relative;
+  overflow: hidden;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 23px;
+  padding: 27px;
+  box-shadow: 0 13px 38px rgba(30,54,96,.055);
+  transition: .22s ease;
+}
+
+.access-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 70px rgba(22,42,82,.13);
+  border-color: #d4e1f5;
+}
+
+.access-card::after {
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  right: -75px;
+  top: -90px;
+  background: var(--glow);
+}
+
+.student-card {
+  --glow: rgba(57,120,246,.08);
+  --accent: #3978f6;
+  --accent2: #245cc5;
+}
+
+.teacher-card {
+  --glow: rgba(18,169,149,.09);
+  --accent: #12a995;
+  --accent2: #087d78;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+}
+
+.icon-tile {
+  width: 54px;
+  height: 54px;
+  border-radius: 17px;
+  display: grid;
+  place-items: center;
+  color: white;
+  background: linear-gradient(145deg,var(--accent),var(--accent2));
+  font-size: 26px;
+}
+
+.access-label {
+  color: var(--accent2);
+  background: color-mix(in srgb, var(--accent) 9%, white);
+  border: 1px solid color-mix(in srgb, var(--accent) 16%, white);
+  padding: 7px 10px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.access-card h3 {
+  margin: 22px 0 9px;
+  font-size: 22px;
+  letter-spacing: -.025em;
+  position: relative;
+  z-index: 1;
+}
+
+.access-card p {
+  color: var(--muted);
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.75;
+  min-height: 47px;
+  position: relative;
+  z-index: 1;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 23px;
+  position: relative;
+  z-index: 1;
+}
+
+.feature {
+  background: #f4f7fb;
+  border: 1px solid #edf1f7;
+  color: #66738b;
+  padding: 7px 9px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.primary-link {
+  width: 100%;
+  min-height: 49px;
+  border: 0;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: white;
+  font-size: 13px;
+  font-weight: 850;
+  background: linear-gradient(105deg,var(--accent),var(--accent2));
+  cursor: pointer;
+  box-shadow: 0 9px 19px color-mix(in srgb, var(--accent) 20%, transparent);
+  transition: .2s;
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+}
+
+.primary-link:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+/* FOOTER */
+
+.bottom-note {
+  margin: 20px 0 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  color: #718099;
+  font-size: 11px;
+  text-align: center;
+}
+
+footer {
+  border-top: 1px solid #e5eaf2;
+  padding: 20px 0 26px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #8a95a8;
+  font-size: 10px;
+}
+
+footer strong {
+  color: #52617b;
+}
+
+/* TEACHER LOGIN POPUP */
+
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: rgba(10,20,42,.62);
+  backdrop-filter: blur(8px);
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-backdrop.show {
+  display: flex;
+}
+
+.modal {
+  width: min(420px,100%);
+  background: white;
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 28px 90px rgba(0,0,0,.3);
+  animation: rise .22s ease-out;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px) scale(.98); }
+  to { opacity: 1; transform: none; }
+}
+
+.modal-icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: #087d78;
+  background: #e7f8f5;
+  font-size: 25px;
+}
+
+.modal h3 {
+  margin: 18px 0 6px;
+  font-size: 22px;
+}
+
+.modal p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+
+.field-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  color: #43516b;
+  margin-bottom: 8px;
+}
+
+.password-wrap input {
+  width: 100%;
+  height: 48px;
+  border: 1px solid #dce3ee;
+  border-radius: 11px;
+  padding: 0 13px;
+  font-size: 14px;
+  outline: none;
+}
+
+.password-wrap input:focus {
+  border-color: #12a995;
+  box-shadow: 0 0 0 3px rgba(18,169,149,.12);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 17px;
+}
+
+.modal-actions button {
+  height: 45px;
+  border-radius: 10px;
+  padding: 0 17px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.cancel {
+  border: 1px solid #e2e7ef;
+  color: #65718a;
+  background: white;
+}
+
+.login {
+  flex: 1;
+  border: 0;
+  color: white;
+  background: linear-gradient(100deg,#12a995,#087d78);
+}
+
+.error {
+  display: none;
+  color: #d13c4b;
+  font-size: 11px;
+  margin-top: 9px;
+}
+
+.error.show {
+  display: block;
+}
+
+.security-note {
+  margin-top: 15px;
+  padding: 10px 12px;
+  border-radius: 9px;
+  background: #f6f8fb;
+  color: #7b879a;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+/* MOBILE */
+
+@media (max-width: 760px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 34px 27px 20px;
+  }
+
+  .hero-art {
+    min-height: 230px;
+  }
+
+  .orbit {
+    width: 225px;
+  }
+
+  .access-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .access-card p {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    width: calc(100% - 26px);
+  }
+
+  .topbar {
+    padding-top: 17px;
+  }
+
+  .brand-name {
+    font-size: 12px;
+  }
+
+  .brand-sub {
+    font-size: 9px;
+  }
+
+  .brand-mark {
+    width: 40px;
+    height: 40px;
+  }
+
+  .top-tag {
+    font-size: 8px;
+    padding: 8px 9px;
+  }
+
+  .hero {
+    border-radius: 22px;
+    min-height: auto;
+  }
+
+  .hero-copy p {
+    font-size: 13px;
+  }
+
+  .portal-section {
+    padding-top: 36px;
+  }
+
+  .access-card {
+    padding: 22px;
+  }
+
+  footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="topbar">
+
+    <div class="brand">
+      <div class="brand-mark">🎓</div>
+
+      <div>
+        <div class="brand-name">SCHOOL EXAMINATION PORTAL</div>
+        <div class="brand-sub">Digital Assessment System</div>
+      </div>
+    </div>
+
+    <div class="top-tag">
+      <span class="live-dot"></span>
+      ONLINE EXAMINATION
+    </div>
+
+  </header>
+
+
+  <!-- HERO SECTION -->
+  <main>
+
+    <section class="hero">
+
+      <div class="hero-copy">
+
+        <div class="eyebrow">
+          <span></span>
+          OFFICIAL EXAMINATION PORTAL
+        </div>
+
+        <h1>
+          Welcome to your<br>
+          <em>Examination Portal.</em>
+        </h1>
+
+        <p>
+          A smarter and simpler way to conduct school examinations.
+          Choose your access below and get started with confidence.
+        </p>
+
+        <div class="hero-note">
+          ✓ &nbsp; Learn. Prepare. Perform.
+        </div>
+
+      </div>
+
+
+      <!-- DECORATIVE EDUCATION ILLUSTRATION -->
+      <div class="hero-art">
+
+        <div class="orbit">
+
+          <div class="book">
+            <div class="page left"></div>
+            <div class="page right"></div>
+            <div class="spine"></div>
+          </div>
+
+          <div class="cap">
+            <div class="top"></div>
+            <div class="base"></div>
+            <div class="tassel"></div>
+          </div>
+
+          <div class="float-chip chip-one">
+            <span>📚</span>
+            Test & Learn
+          </div>
+
+          <div class="float-chip chip-two">
+            <span>🛡️</span>
+            Secure Access
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ACCESS SELECTION -->
+    <section class="portal-section">
+
+      <div class="section-heading">
+
+        <div class="section-kicker">
+          CHOOSE YOUR DESTINATION
+        </div>
+
+        <h2>How would you like to continue?</h2>
+
+        <p>
+          Select the section that matches your role.
+        </p>
+
+      </div>
+
+
+      <div class="access-grid">
+
+        <!-- STUDENT CARD -->
+        <article class="access-card student-card">
+
+          <div class="card-top">
+
+            <div class="icon-tile">👨‍🎓</div>
+
+            <span class="access-label">
+              STUDENT ACCESS
+            </span>
+
+          </div>
+
+          <h3>Student Section</h3>
+
+          <p>
+            Enter your class, choose your subject and attempt
+            the examinations made available by your teachers.
+          </p>
+
+          <div class="features">
+            <span class="feature">Class 6–10</span>
+            <span class="feature">Available Tests</span>
+            <span class="feature">Online Assessment</span>
+          </div>
+
+          <a class="primary-link" href="students.html">
+            ENTER AS STUDENT →
+          </a>
+
+        </article>
+
+
+        <!-- TEACHER CARD -->
+        <article class="access-card teacher-card">
+
+          <div class="card-top">
+
+            <div class="icon-tile">🛡️</div>
+
+            <span class="access-label">
+              TEACHER ACCESS
+            </span>
+
+          </div>
+
+          <h3>Teacher Section</h3>
+
+          <p>
+            Manage examinations, update Google Form links,
+            set time limits and control examination availability.
+          </p>
+
+          <div class="features">
+            <span class="feature">Exam Management</span>
+            <span class="feature">Timer Settings</span>
+            <span class="feature">Access Control</span>
+          </div>
+
+          <button
+            class="primary-link"
+            type="button"
+            id="teacherLoginButton">
+
+            TEACHER LOGIN →
+
+          </button>
+
+        </article>
+
+      </div>
+
+
+      <div class="bottom-note">
+        🛡️ &nbsp;
+        Please use the section assigned to you by your school.
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <span>
+      © <span id="year"></span>
+      <strong>School Examination Portal.</strong>
+      All rights reserved.
+    </span>
+
+    <span>
+      Powered by
+      <strong>Zorvion Software Solutions</strong>
+    </span>
+
+  </footer>
+
+</div>
+
+
+<!-- TEACHER LOGIN POPUP -->
+<div
+  class="modal-backdrop"
+  id="teacherModal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modalTitle">
+
+  <div class="modal">
+
+    <div class="modal-icon">🔐</div>
+
+    <h3 id="modalTitle">Teacher Login</h3>
+
+    <p>
+      Enter the teacher access password to continue
+      to examination management.
+    </p>
+
+    <form id="teacherLoginForm">
+
+      <label class="field-label" for="teacherPassword">
+        TEACHER PASSWORD
+      </label>
+
+      <div class="password-wrap">
+
+        <input
+          id="teacherPassword"
+          type="password"
+          placeholder="Enter password"
+          autocomplete="current-password"
+          required>
+
+      </div>
+
+      <div class="error" id="loginError">
+        Incorrect password. Please try again.
+      </div>
+
+      <div class="modal-actions">
+
+        <button
+          class="cancel"
+          type="button"
+          id="cancelLogin">
+          Cancel
+        </button>
+
+        <button
+          class="login"
+          type="submit">
+          Continue to Dashboard
+        </button>
+
+      </div>
+
+    </form>
+
+    <div class="security-note">
+      Basic access protection only. This password is visible
+      to anyone who inspects the website source code.
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* ======================================
+   TEACHER PASSWORD SETTINGS
+====================================== */
+
+// Change the password here.
+const TEACHER_PASSWORD = "ChangeThisPassword";
+
+// Change this if your teacher dashboard has another filename.
+const TEACHER_DASHBOARD_PAGE = "teachers.html";
+
+
+/* ======================================
+   TEACHER LOGIN
+====================================== */
+
+const modal = document.getElementById("teacherModal");
+
+const passwordInput =
+  document.getElementById("teacherPassword");
+
+const loginError =
+  document.getElementById("loginError");
+
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+
+function openTeacherLogin() {
+
+  modal.classList.add("show");
+
+  loginError.classList.remove("show");
+
+  passwordInput.value = "";
+
+  setTimeout(() => passwordInput.focus(), 50);
+
+}
+
+
+function closeTeacherLogin() {
+
+  modal.classList.remove("show");
+
+  loginError.classList.remove("show");
+
+}
+
+
+// Open popup
+document
+  .getElementById("teacherLoginButton")
+  .addEventListener("click", openTeacherLogin);
+
+
+// Close popup
+document
+  .getElementById("cancelLogin")
+  .addEventListener("click", closeTeacherLogin);
+
+
+// Close when clicking outside
+modal.addEventListener("click", (event) => {
+
+  if (event.target === modal) {
+    closeTeacherLogin();
+  }
+
+});
+
+
+// Close with Escape key
+document.addEventListener("keydown", (event) => {
+
+  if (event.key === "Escape") {
+    closeTeacherLogin();
+  }
+
+});
+
+
+// Verify password
+document
+  .getElementById("teacherLoginForm")
+  .addEventListener("submit", (event) => {
+
+    event.preventDefault();
+
+    if (passwordInput.value === TEACHER_PASSWORD) {
+
+      window.location.href = TEACHER_DASHBOARD_PAGE;
+
+    } else {
+
+      loginError.classList.add("show");
+
+      passwordInput.select();
+
+    }
+
+  });
+
+</script>
+
+</body>
+</html>
