@@ -1,0 +1,734 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teacher Dashboard | Examination Portal</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f6fb;
+    color: #17243b;
+}
+
+/* LOGIN SCREEN */
+
+.login-screen {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background:
+        radial-gradient(circle at 15% 15%, #d9f4f0, transparent 35%),
+        radial-gradient(circle at 85% 85%, #dce8ff, transparent 35%),
+        #f5f8fc;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 410px;
+    background: white;
+    padding: 38px;
+    border-radius: 22px;
+    box-shadow: 0 20px 60px rgba(25,48,82,.12);
+    text-align: center;
+}
+
+.login-icon {
+    width: 68px;
+    height: 68px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 20px;
+    border-radius: 20px;
+    background: #e3f5f1;
+    font-size: 30px;
+}
+
+.login-box h1 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.login-box p {
+    color: #758198;
+    line-height: 1.6;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+input, select {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid #dce3ed;
+    border-radius: 10px;
+    outline: none;
+    font-size: 14px;
+    background: white;
+}
+
+input:focus, select:focus {
+    border-color: #26958e;
+}
+
+.primary-btn {
+    border: 0;
+    background: linear-gradient(135deg, #176b70, #269b91);
+    color: white;
+    padding: 13px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.primary-btn:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+}
+
+.login-box .primary-btn {
+    width: 100%;
+    margin-top: 14px;
+}
+
+.error {
+    color: #d23b45;
+    font-size: 13px;
+    margin-top: 12px;
+    min-height: 18px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 22px;
+    text-decoration: none;
+    color: #63738b;
+    font-size: 13px;
+}
+
+/* DASHBOARD */
+
+.dashboard {
+    display: none;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 245px;
+    background: #142a4d;
+    color: white;
+    position: fixed;
+    inset: 0 auto 0 0;
+    padding: 28px 18px;
+}
+
+.brand {
+    font-size: 18px;
+    font-weight: 800;
+    padding: 0 12px 32px;
+    line-height: 1.5;
+}
+
+.brand span {
+    display: block;
+    color: #79d3c8;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-top: 4px;
+}
+
+.nav-label {
+    color: #91a5c2;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    padding: 10px 12px;
+}
+
+.nav-item {
+    display: block;
+    padding: 13px 14px;
+    border-radius: 10px;
+    color: #dce7f7;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 7px;
+    cursor: pointer;
+}
+
+.nav-item.active, .nav-item:hover {
+    background: #24456e;
+    color: white;
+}
+
+.sidebar-bottom {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    right: 25px;
+    color: #aabbd2;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.main {
+    margin-left: 245px;
+    padding: 30px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.topbar h1 {
+    font-size: 26px;
+}
+
+.topbar p {
+    color: #7b8799;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+.logout-btn {
+    border: 1px solid #dce3ed;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 9px;
+    cursor: pointer;
+    color: #53647d;
+    font-weight: 700;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    padding: 22px;
+    border-radius: 15px;
+    border: 1px solid #e6ebf2;
+}
+
+.stat-card p {
+    color: #7b8799;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.stat-card h2 {
+    font-size: 29px;
+    color: #172f52;
+}
+
+.panel {
+    background: white;
+    border: 1px solid #e5ebf2;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 22px;
+}
+
+.panel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.panel-heading h2 {
+    font-size: 18px;
+}
+
+.panel-heading p {
+    font-size: 12px;
+    color: #8290a3;
+    margin-top: 5px;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+}
+
+th {
+    text-align: left;
+    color: #78869b;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .7px;
+    padding: 13px 10px;
+    background: #f7f9fc;
+}
+
+td {
+    padding: 15px 10px;
+    border-bottom: 1px solid #edf0f5;
+    font-size: 13px;
+}
+
+.status {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.active-status {
+    background: #e4f7ed;
+    color: #21804d;
+}
+
+.inactive-status {
+    background: #fff0e8;
+    color: #bd6534;
+}
+
+.action-btn {
+    border: 1px solid #dce3ed;
+    background: white;
+    padding: 7px 10px;
+    border-radius: 7px;
+    font-size: 12px;
+    cursor: pointer;
+    margin: 2px;
+}
+
+.action-btn:hover {
+    background: #f1f5fa;
+}
+
+.empty-state {
+    padding: 35px 15px;
+    text-align: center;
+    color: #8491a3;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #52627a;
+}
+
+.field.full {
+    grid-column: 1 / -1;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.secondary-btn {
+    border: 1px solid #dce3ed;
+    background: white;
+    color: #52627a;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.connection-note {
+    background: #fff8e8;
+    border: 1px solid #f2dfae;
+    color: #775b20;
+    padding: 14px 16px;
+    border-radius: 11px;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+#formMessage {
+    font-size: 13px;
+    margin-top: 12px;
+    color: #65738a;
+}
+
+@media (max-width: 850px) {
+    .sidebar {
+        width: 190px;
+    }
+
+    .main {
+        margin-left: 190px;
+        padding: 22px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .sidebar {
+        position: static;
+        width: 100%;
+        padding: 15px;
+    }
+
+    .brand {
+        padding: 5px 8px 15px;
+    }
+
+    .sidebar-bottom {
+        display: none;
+    }
+
+    .main {
+        margin-left: 0;
+        padding: 18px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+    }
+
+    .topbar h1 {
+        font-size: 21px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .field.full {
+        grid-column: auto;
+    }
+
+    .panel {
+        padding: 17px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+
+<section class="login-screen" id="loginScreen">
+    <div class="login-box">
+        <div class="login-icon">🔐</div>
+        <h1>Teacher Access</h1>
+        <p>Sign in to access the Examination Management Dashboard.</p>
+
+        <input
+            type="password"
+            id="teacherPassword"
+            placeholder="Enter teacher password"
+            autocomplete="current-password"
+        >
+
+        <button class="primary-btn" onclick="login()">Access Dashboard →</button>
+
+        <div class="error" id="loginError"></div>
+
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+</section>
+
+
+<!-- DASHBOARD -->
+
+<div class="dashboard" id="dashboard">
+
+    <aside class="sidebar">
+        <div class="brand">
+            EXAMINATION PORTAL
+            <span>TEACHER PANEL</span>
+        </div>
+
+        <div class="nav-label">MANAGEMENT</div>
+
+        <a class="nav-item active" href="#overview">▦ &nbsp; Overview</a>
+        <a class="nav-item" href="#exams">▤ &nbsp; Manage Exams</a>
+        <a class="nav-item" href="#createExam">＋ &nbsp; Create Examination</a>
+
+        <div class="sidebar-bottom">
+            Examination Management System<br>
+            Powered by Zorvion Software Solutions
+        </div>
+    </aside>
+
+
+    <main class="main">
+
+        <div class="topbar" id="overview">
+            <div>
+                <h1>Teacher Dashboard</h1>
+                <p>Manage examinations and student access.</p>
+            </div>
+
+            <button class="logout-btn" onclick="logout()">Log Out ↗</button>
+        </div>
+
+
+        <div class="connection-note">
+            <strong>Connection setup pending:</strong>
+            This dashboard is currently an interface. Connect the Google Apps Script
+            web app before using it to save or update examinations in your Google Sheet.
+        </div>
+
+
+        <section class="stats">
+            <div class="stat-card">
+                <p>Total Examinations</p>
+                <h2 id="totalCount">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <p>Active Examinations</p>
+                <h2 id="activeCount">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <p>Disabled Examinations</p>
+                <h2 id="inactiveCount">0</h2>
+            </div>
+        </section>
+
+
+        <!-- EXAM LIST -->
+
+        <section class="panel" id="exams">
+            <div class="panel-heading">
+                <div>
+                    <h2>Examination Records</h2>
+                    <p>View and manage examination details.</p>
+                </div>
+
+                <button class="primary-btn" onclick="showCreateForm()">
+                    + New Examination
+                </button>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Class</th>
+                            <th>Subject</th>
+                            <th>Exam Name</th>
+                            <th>Duration</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="examTable">
+                        <tr>
+                            <td colspan="6">
+                                <div class="empty-state">
+                                    No examination records loaded yet.<br>
+                                    Connect the Google Apps Script API to load your records.
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+        <!-- CREATE / EDIT FORM -->
+
+        <section class="panel" id="createExam">
+            <div class="panel-heading">
+                <div>
+                    <h2 id="formTitle">Create New Examination</h2>
+                    <p>Add examination details. Questions will continue to be created through your existing question-paper generator.</p>
+                </div>
+            </div>
+
+            <form id="examForm" onsubmit="saveExam(event)">
+
+                <input type="hidden" id="examId">
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="examClass">Class</label>
+                        <select id="examClass" required>
+                            <option value="">Select Class</option>
+                            <option value="6">Class 6</option>
+                            <option value="7">Class 7</option>
+                            <option value="8">Class 8</option>
+                            <option value="9">Class 9</option>
+                            <option value="10">Class 10</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="subject">Subject</label>
+                        <input id="subject" type="text" placeholder="e.g. Mathematics" required>
+                    </div>
+
+                    <div class="field full">
+                        <label for="examName">Examination Name</label>
+                        <input id="examName" type="text" placeholder="e.g. Monthly Test - November" required>
+                    </div>
+
+                    <div class="field full">
+                        <label for="formUrl">Google Form Student Link</label>
+                        <input id="formUrl" type="url" placeholder="https://docs.google.com/forms/..." required>
+                    </div>
+
+                    <div class="field">
+                        <label for="duration">Duration (Minutes)</label>
+                        <input id="duration" type="number" min="1" placeholder="e.g. 60" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="timerEnabled">Examination Timer</label>
+                        <select id="timerEnabled">
+                            <option value="Yes">Enabled</option>
+                            <option value="No">Disabled</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="examStatus">Examination Status</label>
+                        <select id="examStatus">
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="form-actions">
+                    <button class="primary-btn" type="submit">Save Examination</button>
+                    <button class="secondary-btn" type="button" onclick="resetForm()">Clear Form</button>
+                </div>
+
+                <div id="formMessage"></div>
+
+            </form>
+        </section>
+
+    </main>
+</div>
+
+
+<script>
+
+/* BASIC PASSWORD GATE
+   Keep this identical to the password in index.html.
+   This is only a basic front-end gate, not secure authentication.
+*/
+
+const TEACHER_PASSWORD = "ChangeThisPassword";
+
+
+function login() {
+    const entered = document.getElementById("teacherPassword").value;
+
+    if (entered === TEACHER_PASSWORD) {
+        document.getElementById("loginScreen").style.display = "none";
+        document.getElementById("dashboard").style.display = "block";
+    } else {
+        document.getElementById("loginError").textContent =
+            "Incorrect password. Please try again.";
+    }
+}
+
+document.getElementById("teacherPassword").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") login();
+});
+
+function logout() {
+    document.getElementById("dashboard").style.display = "none";
+    document.getElementById("loginScreen").style.display = "grid";
+    document.getElementById("teacherPassword").value = "";
+}
+
+
+/* DASHBOARD FORM INTERFACE
+   Google Sheets API connection will be added next.
+*/
+
+function showCreateForm() {
+    resetForm();
+    document.getElementById("createExam").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+function resetForm() {
+    document.getElementById("examForm").reset();
+    document.getElementById("examId").value = "";
+    document.getElementById("formTitle").textContent = "Create New Examination";
+    document.getElementById("formMessage").textContent = "";
+}
+
+function saveExam(event) {
+    event.preventDefault();
+
+    const url = document.getElementById("formUrl").value.trim();
+
+    if (!url.startsWith("https://docs.google.com/forms/")) {
+        document.getElementById("formMessage").textContent =
+            "Please enter a valid Google Forms link.";
+        return;
+    }
+
+    document.getElementById("formMessage").textContent =
+        "The form is ready, but Google Sheets connection has not been configured yet. No record has been saved.";
+}
+
+
+/* PLACEHOLDER ACTIONS */
+
+function editExam(id) {
+    alert("Editing will be enabled after the Google Sheets connection is added.");
+}
+
+function deleteExam(id) {
+    alert("Delete will be enabled after the Google Sheets connection is added.");
+}
+
+function toggleExam(id) {
+    alert("Status updates will be enabled after the Google Sheets connection is added.");
+}
+
+</script>
+
+</body>
+</html>
