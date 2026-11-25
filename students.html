@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Portal | Examination Portal</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    color: #17243b;
+    background:
+        radial-gradient(circle at 10% 10%, #d9f4f0 0, transparent 32%),
+        radial-gradient(circle at 90% 85%, #dce8ff 0, transparent 32%),
+        #f5f8fc;
+}
+
+header {
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: 800;
+    color: #142a4d;
+}
+
+.home-link {
+    text-decoration: none;
+    color: #176b70;
+    font-weight: 700;
+    padding: 11px 18px;
+    border: 1px solid #c9dddf;
+    border-radius: 30px;
+    background: white;
+}
+
+main {
+    max-width: 1100px;
+    margin: 45px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.tag {
+    display: inline-block;
+    color: #147b76;
+    background: #e1f5f1;
+    padding: 9px 16px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+h1 {
+    font-size: clamp(32px, 5vw, 49px);
+    margin: 20px 0 12px;
+    color: #142a4d;
+}
+
+.subtitle {
+    color: #65738a;
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.class-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+    margin-top: 48px;
+}
+
+.class-card {
+    text-decoration: none;
+    color: inherit;
+    background: rgba(255,255,255,.9);
+    border: 1px solid #e1e8f0;
+    border-radius: 22px;
+    padding: 28px 12px;
+    box-shadow: 0 12px 35px rgba(25,48,82,.06);
+    transition: .25s ease;
+}
+
+.class-card:hover {
+    transform: translateY(-7px);
+    border-color: #55aaa5;
+    box-shadow: 0 18px 40px rgba(25,48,82,.12);
+}
+
+.class-number {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 18px;
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #176b70, #37a99c);
+    color: white;
+    font-size: 27px;
+    font-weight: 800;
+}
+
+.class-card h2 {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.class-card p {
+    color: #7a8799;
+    font-size: 13px;
+}
+
+.arrow {
+    display: inline-block;
+    margin-top: 18px;
+    color: #16847e;
+    font-weight: 800;
+}
+
+.notice {
+    margin: 38px auto 0;
+    max-width: 650px;
+    padding: 17px 20px;
+    border-radius: 14px;
+    background: #edf4ff;
+    color: #526783;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 15px;
+    color: #8a96a8;
+    font-size: 12px;
+}
+
+@media (max-width: 850px) {
+    .class-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 520px) {
+    header {
+        padding: 18px 5%;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    main {
+        margin: 25px auto;
+    }
+
+    .class-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 32px;
+    }
+
+    .class-card {
+        padding: 23px 8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">EXAMINATION PORTAL</div>
+    <a class="home-link" href="index.html">← Home</a>
+</header>
+
+<main>
+    <span class="tag">STUDENT SECTION</span>
+
+    <h1>Select Your Class</h1>
+
+    <p class="subtitle">
+        Welcome to the online examination portal.
+        Please select your class below to view available examinations.
+    </p>
+
+    <div class="class-grid">
+
+        <a class="class-card" href="class6.html">
+            <div class="class-number">6</div>
+            <h2>Class 6</h2>
+            <p>View examinations</p>
+            <span class="arrow">Continue →</span>
+        </a>
+
+        <a class="class-card" href="class7.html">
+            <div class="class-number">7</div>
+            <h2>Class 7</h2>
+            <p>View examinations</p>
+            <span class="arrow">Continue →</span>
+        </a>
+
+        <a class="class-card" href="class8.html">
+            <div class="class-number">8</div>
+            <h2>Class 8</h2>
+            <p>View examinations</p>
+            <span class="arrow">Continue →</span>
+        </a>
+
+        <a class="class-card" href="class9.html">
+            <div class="class-number">9</div>
+            <h2>Class 9</h2>
+            <p>View examinations</p>
+            <span class="arrow">Continue →</span>
+        </a>
+
+        <a class="class-card" href="class10.html">
+            <div class="class-number">10</div>
+            <h2>Class 10</h2>
+            <p>View examinations</p>
+            <span class="arrow">Continue →</span>
+        </a>
+
+    </div>
+
+    <div class="notice">
+        <strong>Important:</strong> Select the class in which you are currently studying.
+        Make sure you open the correct examination.
+    </div>
+</main>
+
+<footer>
+    Powered by Zorvion Software Solutions
+</footer>
+
+</body>
+</html>
